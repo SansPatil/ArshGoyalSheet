@@ -1,0 +1,36 @@
+Game of Life
+
+void gameOfLife(vector<vector<int>>& board) {
+        int n=board.size();
+        int m=board[0].size();
+        int dR[]={0,0,1,1,1,-1,-1,-1};
+        int dC[]={1,-1,1,-1,0,0,1,-1};
+        for(int r=0;r<n;r++)
+        {
+            for(int c=0;c<m;c++)
+            {
+                int live=0;
+                for(int i=0;i<8;i++)
+                {
+                    int newR=r+dR[i];
+                    int newC=c+dC[i];
+                    if(newR>=0 && newC>=0 && newR<n &&newC<m && abs(board[newR][newC])==1)
+                        live++;
+                    
+                }
+                if(board[r][c]==1 && (live<2 || live>3))
+                    board[r][c]=-1;
+                if(board[r][c]==0 && live ==3)
+                    board[r][c]=2;
+            }
+        }
+        for(int r=0;r<n;r++)
+        {
+            for(int c=0;c<m;c++)
+            { 
+                if(board[r][c]>=1)
+                    board[r][c]=1;
+                else board[r][c]=0;
+            }
+        }
+    }

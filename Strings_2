@@ -1,0 +1,21 @@
+Print all the duplicates in the input string
+/*
+Let input string be “geeksforgeeks” 
+count[‘e’] = 4 
+count[‘g’] = 2
+count[‘k’] = 2 
+*/
+
+void printDups(string str)
+{
+    map<char, int> count;
+    for (int i = 0; i < str.length(); i++) {
+        count[str[i]]++;
+    }
+ 
+    for (auto it : count) {
+        if (it.second > 1)
+            cout << it.first << ", count = " << it.second
+                 << "\n";
+    }
+}
